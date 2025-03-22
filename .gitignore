@@ -1,2 +1,28 @@
+# System files (Mac + Windows)
 .DS_Store
-.DS_Store
+Thumbs.db
+
+# Unreal Engine auto-generated folders
+Binaries/
+Build/
+DerivedDataCache/
+Intermediate/
+Saved/
+
+# Optional: Ignore local settings or IDE-specific files
+.vscode/
+*.sln
+*.VC.db
+
+# Android/Meta Quest build folders
+.gradle/
+app/build/
+app/.cxx/
+
+# Ignore log files and temporary configs
+*.log
+*.tmp
+
+# Git LFS is handling large binary files, so no need to track changes to these
+*.uasset
+*.umap
