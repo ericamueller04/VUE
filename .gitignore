@@ -31,3 +31,9 @@ app/.cxx/
 # Crash reports (optional)
 CrashReportClient/
 
+# VS and platform-specific configs we don't need to track
+.vsconfig
+Config/Mac/
+Config/VisionOS/
+
+
