@@ -2,27 +2,32 @@
 .DS_Store
 Thumbs.db
 
-# Unreal Engine auto-generated folders
+# Unreal Engine auto-generated folders (do NOT push these)
 Binaries/
 Build/
 DerivedDataCache/
 Intermediate/
 Saved/
 
-# Optional: Ignore local settings or IDE-specific files
+# IDE and Editor Settings (per-machine configs)
 .vscode/
+.vs/
 *.sln
+*.suo
 *.VC.db
+*.VC.opendb
+*.user
+*.userprefs
 
-# Android/Meta Quest build folders
+# Android/Meta Quest build folders (if using mobile/VR)
 .gradle/
 app/build/
 app/.cxx/
 
-# Ignore log files and temporary configs
+# Logs & temp
 *.log
 *.tmp
 
-# Git LFS is handling large binary files, so no need to track changes to these
-*.uasset
-*.umap
+# Crash reports (optional)
+CrashReportClient/
+
