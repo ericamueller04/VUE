@@ -113,6 +113,7 @@ main {
     font-weight: 500;
     cursor: pointer;
     transition: opacity 0.3s;
+    font-family: 'Futura', 'Poppins', sans-serif;
 }
 
 .cta-button:hover {
@@ -141,6 +142,7 @@ main {
     cursor: pointer;
     transition: opacity 0.3s;
     margin-bottom: 0.5rem;
+    font-family: 'Futura', 'Poppins', sans-serif;
 }
 
 .upload-label:hover {
@@ -152,9 +154,11 @@ main {
 }
 
 .original-image {
+    max-width: 800px;
     width: 100%;
     height: auto;
     display: block;
+    margin: 0 auto;
 }
 
 .filter-controls {
@@ -173,6 +177,7 @@ main {
     border-radius: 25px;
     cursor: pointer;
     transition: all 0.3s;
+    font-family: 'Futura', 'Poppins', sans-serif;
 }
 
 .filter-btn:hover {
@@ -186,9 +191,11 @@ main {
 
 /* About Page Styles */
 .simulation-image {
+    max-width: 800px;
     width: 100%;
     height: auto;
     display: block;
+    margin: 0 auto;
 }
 
 /* Colorblindness Types Section */
@@ -221,7 +228,7 @@ main {
     background: linear-gradient(90deg, #FF6B00 0%, #FFD600 100%);
     color: black;
     border: none;
-    border-radius: 50%;
+    border-radius: 15px;
     width: 30px;
     height: 30px;
     font-size: 0.8rem;
@@ -230,6 +237,7 @@ main {
     justify-content: center;
     cursor: pointer;
     transition: transform 0.3s, opacity 0.3s;
+    font-family: 'Futura', 'Poppins', sans-serif;
 }
 
 .dropdown-toggle:hover {
@@ -381,6 +389,7 @@ main {
     transition: opacity 0.3s;
     width: 100%;
     text-align: center;
+    font-family: 'Futura', 'Poppins', sans-serif;
 }
 
 .submit-btn:hover {
