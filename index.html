@@ -8,6 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/all-round-gothic" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/futura-pt" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -27,31 +29,56 @@
 
     <main>
         <!-- Home Page -->
-        <section class="page active">
-            <div class="hero">
-                <div class="logo-large">
-                    <img src="Vue.svg" alt="Vue Logo" width="200" height="120">
+        <section class="page active home-page">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <h1>See The World Differently.</h1>
+                    <p>Vue is an innovative augmented reality (AR) experience designed to immerse users in the world of color vision deficiency. Through advanced color filtering technology, Vue allows users to step into the shoes of individuals with different types of colorblindness, providing a powerful, first-hand understanding of their visual experience.</p>
+                    
+                    <p>By simulating the various ways color is perceived by those with color vision deficiencies, Vue fosters empathy, awareness, and appreciation for the challenges faced by millions of people. This interactive tool not only educates users but also encourages a deeper commitment to creating more inclusive and accessible designs in all areas of life.</p>
+                    
+                    <div class="hero-buttons">
+                        <a href="about.html" class="btn-primary">ABOUT</a>
+                        <a href="contact.html" class="btn-primary">CONTACT</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="greta_vue 1.png" alt="Person wearing VR headset" class="circular-image">
                 </div>
             </div>
-            <div class="content-container">
-                <div class="content-left">
-                    <h2>See The World Differently</h2>
-                    <p>Experience how people with colorblindness perceive the world around them.</p>
-                    <button class="cta-button" id="simulateBtn">Try Simulation</button>
+            
+            <div class="simulator-section">
+                <h2>COLORBLINDNESS SIMULATOR</h2>
+                <p>Choose one of the options below to simulate color vision deficiency:</p>
+                
+                <div class="filter-controls">
+                    <button class="filter-btn active" data-filter="normal">Normal Vision</button>
+                    <button class="filter-btn" data-filter="protanopia">Protanopia</button>
+                    <button class="filter-btn" data-filter="deuteranopia">Deuteranopia</button>
+                    <button class="filter-btn" data-filter="tritanopia">Tritanopia</button>
+                    <button class="filter-btn" data-filter="monochromacy">Monochromacy</button>
                 </div>
-                <div class="content-right">
-                    <div class="image-container" id="imageDemo">
-                        <img src="Bruner_Headshot.jpg" alt="Headshot image" class="original-image">
+                
+                <div class="simulation-container" id="imageDemo">
+                    <div class="simulation-images">
+                        <div class="image-pair">
+                            <div class="image-wrapper">
+                                <img src="H_Img.png" alt="Original image" class="original-image">
+                                <p>Original Image</p>
+                            </div>
+                            <div class="image-wrapper">
+                                <img src="H_Img.png" alt="Filtered image" class="filtered-image">
+                                <p>With Filter</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="simulator-actions">
                         <div class="upload-container">
                             <label for="imageUpload" class="upload-label">Upload your own image</label>
                             <input type="file" id="imageUpload" accept="image/*" class="file-input">
                         </div>
-                        <div class="filter-controls">
-                            <button class="filter-btn active" data-filter="normal">Normal Vision</button>
-                            <button class="filter-btn" data-filter="protanopia">Protanopia</button>
-                            <button class="filter-btn" data-filter="deuteranopia">Deuteranopia</button>
-                            <button class="filter-btn" data-filter="tritanopia">Tritanopia</button>
-                        </div>
+                        <button id="saveImage" class="save-btn">Save Image</button>
                     </div>
                 </div>
             </div>
@@ -59,7 +86,14 @@
     </main>
 
     <footer>
-        <p>&copy; 2025 Vue - Colorblind Awareness Project</p>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="Vue.svg" alt="Vue Logo" width="80">
+            </div>
+            <div class="footer-info">
+                <p>&copy; 2025 Vue - Colorblind Awareness Project</p>
+            </div>
+        </div>
     </footer>
 
     <script src="script.js"></script>

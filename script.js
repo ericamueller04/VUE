@@ -11,17 +11,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Contact form submission
     setupContactForm();
     
-    // Play button on About page
-    setupPlayButton();
-    
-    // Simulation button on Home page
-    const simulateBtn = document.getElementById('simulateBtn');
-    if (simulateBtn) {
-        simulateBtn.addEventListener('click', function() {
-            // Scroll to the image demo section
-            document.getElementById('imageDemo').scrollIntoView({ behavior: 'smooth' });
-        });
-    }
+    // Setup dropdown toggles for colorblindness types
+    setupDropdownToggles();
 });
 
 // Add SVG filters to the document for colorblindness simulation
@@ -75,9 +66,10 @@ function addColorblindnessFilters() {
 // Setup image filter functionality
 function setupImageFilters() {
     const filterButtons = document.querySelectorAll('.filter-btn');
-    const image = document.querySelector('.original-image');
+    const originalImage = document.querySelector('.original-image');
+    const filteredImage = document.querySelector('.filtered-image');
     
-    if (filterButtons.length > 0 && image) {
+    if (filterButtons.length > 0 && originalImage && filteredImage) {
         filterButtons.forEach(button => {
             button.addEventListener('click', function() {
                 // Remove active class from all buttons
@@ -86,13 +78,13 @@ function setupImageFilters() {
                 // Add active class to clicked button
                 this.classList.add('active');
                 
-                // Remove all filter classes from the image
-                image.classList.remove('protanopia', 'deuteranopia', 'tritanopia');
+                // Remove all filter classes from the filtered image
+                filteredImage.classList.remove('protanopia', 'deuteranopia', 'tritanopia', 'monochromacy');
                 
                 // Add the selected filter class
                 const filter = this.getAttribute('data-filter');
                 if (filter !== 'normal') {
-                    image.classList.add(filter);
+                    filteredImage.classList.add(filter);
                 }
             });
         });
@@ -108,11 +100,13 @@ function setupContactForm() {
             e.preventDefault();
             
             // Get form values
-            const message = document.getElementById('message').value;
+            const name = document.getElementById('name')?.value || '';
+            const email = document.getElementById('email')?.value || '';
+            const message = document.getElementById('message')?.value || '';
             
             // In a real application, you would send this data to a server
             // For this demo, we'll just show an alert
-            alert(`Thank you for your message! We'll get back to you soon.`);
+            alert(`Thank you for your message${name ? ', ' + name : ''}! We'll get back to you${email ? ' at ' + email : ''} soon.`);
             
             // Reset the form
             contactForm.reset();
@@ -123,9 +117,11 @@ function setupContactForm() {
 // Setup image upload functionality
 function setupImageUpload() {
     const imageUpload = document.getElementById('imageUpload');
-    const image = document.querySelector('.original-image');
+    const originalImage = document.querySelector('.original-image');
+    const filteredImage = document.querySelector('.filtered-image');
+    const saveButton = document.getElementById('saveImage');
     
-    if (imageUpload && image) {
+    if (imageUpload && originalImage && filteredImage) {
         imageUpload.addEventListener('change', function(e) {
             const file = e.target.files[0];
             
@@ -141,14 +137,22 @@ function setupImageUpload() {
                 
                 // Set up the FileReader onload event
                 reader.onload = function(readerEvent) {
-                    // Set the image source to the uploaded image
-                    image.src = readerEvent.target.result;
+                    // Set both images to the uploaded image
+                    originalImage.src = readerEvent.target.result;
+                    filteredImage.src = readerEvent.target.result;
                     
-                    // Reset any active filters
+                    // Apply the active filter to the filtered image
                     const activeFilterBtn = document.querySelector('.filter-btn.active');
                     if (activeFilterBtn) {
-                        // Trigger a click on the active filter button to apply the filter to the new image
-                        activeFilterBtn.click();
+                        const filter = activeFilterBtn.getAttribute('data-filter');
+                        
+                        // Remove all filter classes
+                        filteredImage.classList.remove('protanopia', 'deuteranopia', 'tritanopia', 'monochromacy');
+                        
+                        // Add the selected filter class
+                        if (filter !== 'normal') {
+                            filteredImage.classList.add(filter);
+                        }
                     }
                 };
                 
@@ -157,89 +161,97 @@ function setupImageUpload() {
             }
         });
     }
-}
-
-// Function to toggle between different colorblindness simulations
-function toggleSimulation(type) {
-    const image = document.querySelector('.original-image');
-    const filterButtons = document.querySelectorAll('.filter-btn');
     
-    if (image) {
-        // Remove all filter classes
-        image.classList.remove('protanopia', 'deuteranopia', 'tritanopia');
-        
-        // Update active button
-        filterButtons.forEach(btn => {
-            if (btn.getAttribute('data-filter') === type) {
-                btn.classList.add('active');
-            } else {
-                btn.classList.remove('active');
-            }
+    // Setup save image functionality
+    if (saveButton && filteredImage) {
+        saveButton.addEventListener('click', function() {
+            // Create a canvas element
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            
+            // Set canvas dimensions to match the image
+            canvas.width = filteredImage.naturalWidth;
+            canvas.height = filteredImage.naturalHeight;
+            
+            // Draw the filtered image onto the canvas
+            ctx.filter = getComputedStyle(filteredImage).filter;
+            ctx.drawImage(filteredImage, 0, 0);
+            
+            // Create a temporary link element
+            const link = document.createElement('a');
+            link.download = 'vue-filtered-image.png';
+            
+            // Convert canvas to data URL and set as link href
+            link.href = canvas.toDataURL('image/png');
+            
+            // Append link to body, click it, and remove it
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
         });
-        
-        // Apply the selected filter
-        if (type !== 'normal') {
-            image.classList.add(type);
-        }
     }
 }
 
-// Setup dropdown toggles on About page
-function setupPlayButton() {
+// Setup dropdown toggles for colorblindness types
+function setupDropdownToggles() {
     const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
-    const simulationImage = document.querySelector('.simulation-image');
+    const typeHeaders = document.querySelectorAll('.type-header');
     
     if (dropdownToggles.length > 0) {
+        // Make dropdown toggles clickable
         dropdownToggles.forEach(toggle => {
-            toggle.addEventListener('click', function() {
-                const parent = this.closest('.type-dropdown');
-                const content = parent.querySelector('.type-content');
-                const filterType = this.getAttribute('data-type');
-                
-                // Toggle dropdown content
-                if (content.classList.contains('active')) {
-                    content.classList.remove('active');
-                    this.classList.remove('active');
-                    
-                    // Remove filter from image
-                    if (simulationImage) {
-                        simulationImage.classList.remove(filterType);
-                    }
-                } else {
-                    // Close all other dropdowns
-                    document.querySelectorAll('.type-content').forEach(item => {
-                        item.classList.remove('active');
-                    });
-                    document.querySelectorAll('.dropdown-toggle').forEach(btn => {
-                        btn.classList.remove('active');
-                    });
-                    
-                    // Open this dropdown
-                    content.classList.add('active');
-                    this.classList.add('active');
-                    
-                    // Apply filter to image
-                    if (simulationImage) {
-                        // Remove all filters first
-                        simulationImage.classList.remove('protanopia', 'deuteranopia', 'tritanopia', 'monochromacy');
-                        // Apply this filter
-                        simulationImage.classList.add(filterType);
-                    }
-                }
+            toggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                toggleDropdown(this);
             });
         });
         
-        // Make type headers also clickable
-        const typeHeaders = document.querySelectorAll('.type-header');
+        // Make type headers clickable
         typeHeaders.forEach(header => {
-            header.addEventListener('click', function(e) {
-                // Don't trigger if the button itself was clicked (it has its own event handler)
-                if (e.target.classList.contains('dropdown-toggle')) return;
-                
-                // Trigger click on the toggle button
+            header.addEventListener('click', function() {
                 const toggle = this.querySelector('.dropdown-toggle');
-                if (toggle) toggle.click();
+                if (toggle) {
+                    toggleDropdown(toggle);
+                }
             });
         });
+    }
+}
+
+// Toggle dropdown content
+function toggleDropdown(toggle) {
+    const parent = toggle.closest('.type-dropdown');
+    const content = parent.querySelector('.type-content');
+    
+    // Close all other dropdowns
+    document.querySelectorAll('.type-content').forEach(item => {
+        if (item !== content) {
+            item.classList.remove('active');
+        }
+    });
+    
+    document.querySelectorAll('.dropdown-toggle').forEach(btn => {
+        if (btn !== toggle) {
+            btn.classList.remove('active');
+        }
+    });
+    
+    // Toggle this dropdown
+    content.classList.toggle('active');
+    toggle.classList.toggle('active');
+}
+
+// Function to apply filter to the filtered image
+function applyFilter(type) {
+    const filteredImage = document.querySelector('.filtered-image');
+    
+    if (filteredImage) {
+        // Remove all filter classes
+        filteredImage.classList.remove('protanopia', 'deuteranopia', 'tritanopia', 'monochromacy');
+        
+        // Apply the selected filter
+        if (type !== 'normal') {
+            filteredImage.classList.add(type);
+        }
     }
 }

@@ -8,6 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/all-round-gothic" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/futura-pt" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -27,24 +29,37 @@
 
     <main>
         <!-- Contact Page -->
-        <section class="page active">
+        <section class="page active contact-page">
             <div class="contact-container">
-                <div class="contact-header">
-                    <p>Vue</p>
-                    <h2>Contact Us</h2>
-                </div>
-                <div class="contact-form">
-                    <form id="contactForm">
-                        <textarea id="message" class="message-area" placeholder="Type your message..." required></textarea>
-                        <button type="submit" class="submit-btn">SUBMIT</button>
-                    </form>
+                <div class="contact-content">
+                    <div class="contact-header">
+                        <img src="Vue.svg" alt="Vue Logo" class="contact-logo">
+                        <h1>Contact Us</h1>
+                        <p>We'd love to hear from you! Whether you have questions about Vue, want to collaborate, or just want to share your thoughts, please fill out the form below.</p>
+                    </div>
+                    <div class="contact-form">
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" class="message-area" placeholder="Type your message..." required></textarea>
+                            </div>
+                            <button type="submit" class="submit-btn">SUBMIT</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2025 Vue - Colorblind Awareness Project</p>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="Vue.svg" alt="Vue Logo" width="80">
+            </div>
+            <div class="footer-info">
+                <p>&copy; 2025 Vue - Colorblind Awareness Project</p>
+            </div>
+        </div>
     </footer>
 
     <script src="script.js"></script>

@@ -8,6 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/all-round-gothic" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/futura-pt" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -27,17 +29,15 @@
 
     <main>
         <!-- About Page -->
-        <section class="page active">
-            <div class="content-container">
-                <div class="content-left">
-                    <h2>About Vue</h2>
+        <section class="page active about-page">
+            <div class="about-hero">
+                <div class="about-hero-content">
+                    <h1>About Vue</h1>
                     <p>Vue is an innovative augmented reality (AR) experience designed to immerse users in the world of color vision deficiency. Through advanced color filtering technology, Vue allows users to step into the shoes of individuals with different types of colorblindness, providing a powerful, first-hand understanding of their visual experience.</p>
                     <p>By simulating the various ways color is perceived by those with color vision deficiencies, Vue fosters empathy, awareness, and appreciation for the challenges faced by millions of people. This interactive tool not only educates users but also encourages a deeper commitment to creating more inclusive and accessible designs in all areas of life.</p>
                 </div>
-                <div class="content-right">
-                    <div class="image-container">
-                        <img src="Bruner_Headshot.jpg" alt="Colorblindness simulation" class="simulation-image">
-                    </div>
+                <div class="about-hero-image">
+                    <img src="Group 20.png" alt="Vue device" class="about-image">
                 </div>
             </div>
             
@@ -46,7 +46,7 @@
                 <div class="type-dropdown">
                     <div class="type-header">
                         <h3>Tritanopia</h3>
-                        <button class="dropdown-toggle" data-type="tritanopia" aria-label="Toggle tritanopia information">▼</button>
+                        <button class="dropdown-toggle" data-type="tritanopia">+</button>
                     </div>
                     <div class="type-content">
                         <p>Tritanopia is a rare form of color blindness that affects the perception of blue and yellow colors. People with tritanopia have difficulty distinguishing between blue and green colors, and yellow can appear as light gray or violet. This condition affects less than 0.1% of the population and is caused by the absence or dysfunction of blue-sensitive photoreceptors in the retina.</p>
@@ -56,7 +56,7 @@
                 <div class="type-dropdown">
                     <div class="type-header">
                         <h3>Protanopia</h3>
-                        <button class="dropdown-toggle" data-type="protanopia" aria-label="Toggle protanopia information">▼</button>
+                        <button class="dropdown-toggle" data-type="protanopia">+</button>
                     </div>
                     <div class="type-content">
                         <p>Protanopia is a type of red-green color blindness where individuals have difficulty distinguishing between red and green colors. People with protanopia lack the long-wavelength sensitive cones in their retina, making reds appear darker and more like black. This condition affects approximately 1% of males and is much rarer in females due to its X-linked inheritance pattern.</p>
@@ -66,7 +66,7 @@
                 <div class="type-dropdown">
                     <div class="type-header">
                         <h3>Deuteranopia</h3>
-                        <button class="dropdown-toggle" data-type="deuteranopia" aria-label="Toggle deuteranopia information">▼</button>
+                        <button class="dropdown-toggle" data-type="deuteranopia">+</button>
                     </div>
                     <div class="type-content">
                         <p>Deuteranopia is the most common form of color blindness, affecting about 1 in 12 men and 1 in 200 women worldwide. It's characterized by the inability to distinguish between red and green colors due to the absence of medium-wavelength sensitive cones in the retina. Unlike protanopia, people with deuteranopia don't perceive reds as darker, but still confuse reds and greens.</p>
@@ -76,7 +76,7 @@
                 <div class="type-dropdown">
                     <div class="type-header">
                         <h3>Monochromacy</h3>
-                        <button class="dropdown-toggle" data-type="monochromacy" aria-label="Toggle monochromacy information">▼</button>
+                        <button class="dropdown-toggle" data-type="monochromacy">+</button>
                     </div>
                     <div class="type-content">
                         <p>Monochromacy, also known as total color blindness, is an extremely rare condition where individuals can only see in shades of gray. People with monochromacy have no functioning cone cells in their retina, relying solely on rod cells which only detect light intensity, not color. This condition affects approximately 1 in 30,000 people and often comes with other vision problems like light sensitivity and poor visual acuity.</p>
@@ -84,43 +84,42 @@
                 </div>
             </div>
             
-            <!-- Why it Matters Section -->
-            <div class="why-matters-section">
-                <div class="logo-container">
-                    <img src="Vue.svg" alt="Vue Logo" width="100" height="60">
+            <!-- Pilestone Section -->
+            <div class="pilestone-section">
+                <div class="pilestone-content">
+                    <h2>Experience Vue</h2>
+                    <p>Vue uses advanced technology to simulate different types of colorblindness, allowing users to experience the world through the eyes of those with color vision deficiencies. Our device works with any visual content, from everyday scenes to digital designs, providing an immersive and educational experience.</p>
                 </div>
-                <div class="matters-content">
-                    <h2>Why it Matters</h2>
-                    <p>Color vision deficiency affects approximately 300 million people worldwide. By understanding how people with different types of colorblindness perceive the world, designers and developers can create more inclusive and accessible products. Vue aims to bridge this gap by providing an immersive experience that fosters empathy and awareness.</p>
+                <div class="pilestone-image">
+                    <img src="pilestone (1) 1.png" alt="Vue device" class="pilestone-img">
                 </div>
+            </div>
+            
+            <!-- Video Section -->
+            <div class="video-section">
+                <video controls>
+                    <source src="ProjectVue_short.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
             </div>
             
             <!-- Team Section -->
             <div class="team-section">
-                <h2>Meet The Team</h2>
+                <div class="team-header">
+                    <img src="Vue.svg" alt="Vue Logo" class="team-logo">
+                    <h2>Meet The Team</h2>
+                </div>
                 <div class="team-members">
                     <div class="team-member">
-                        <div class="member-photo">
-                            <img src="Bruner_Headshot.jpg" alt="Judy Dreller">
-                        </div>
                         <h3>Judy Dreller</h3>
                     </div>
                     <div class="team-member">
-                        <div class="member-photo">
-                            <img src="Bruner_Headshot.jpg" alt="Luke Killingsworth">
-                        </div>
                         <h3>Luke Killingsworth</h3>
                     </div>
                     <div class="team-member">
-                        <div class="member-photo">
-                            <img src="Bruner_Headshot.jpg" alt="Erica Mueller">
-                        </div>
                         <h3>Erica Mueller</h3>
                     </div>
                     <div class="team-member">
-                        <div class="member-photo">
-                            <img src="Bruner_Headshot.jpg" alt="Jayden Polk">
-                        </div>
                         <h3>Jayden Polk</h3>
                     </div>
                 </div>
@@ -129,7 +128,14 @@
     </main>
 
     <footer>
-        <p>&copy; 2025 Vue - Colorblind Awareness Project</p>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="Vue.svg" alt="Vue Logo" width="80">
+            </div>
+            <div class="footer-info">
+                <p>&copy; 2025 Vue - Colorblind Awareness Project</p>
+            </div>
+        </div>
     </footer>
 
     <script src="script.js"></script>
