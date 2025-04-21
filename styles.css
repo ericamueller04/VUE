@@ -60,20 +60,25 @@ header {
     align-items: center;
 }
 
+.logo img {
+    width: 80px;
+    height: auto;
+}
+
 nav ul {
     display: flex;
     gap: 2rem;
 }
 
 nav a {
-    font-weight: 500;
+    font-weight: 300;
     padding: 0.5rem 0;
     position: relative;
-    transition: color 0.3s;
+    transition: all 0.3s;
 }
 
 nav a:hover {
-    color: #CDD71F;
+    font-weight: 600;
 }
 
 nav a.active {
@@ -107,10 +112,10 @@ main {
     color: #FFFFFF;
     border: none;
     border-radius: 25px;
-    font-weight: bold;
+    font-weight: 500;
     cursor: pointer;
     transition: opacity 0.3s;
-    font-family: 'All Round Gothic', sans-serif;
+    font-family: 'Futura PT', 'Futura', sans-serif;
     text-align: center;
     margin-right: 1rem;
     margin-bottom: 1rem;
@@ -128,40 +133,38 @@ main {
 .hero-container {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
     max-width: 1200px;
     margin: 0 auto 3rem;
     padding: 2rem;
+    border-radius: 20px;
+    color: #000000;
     background-image: url('Frame 36353 1.png');
     background-size: cover;
     background-position: center;
-    border-radius: 20px;
-    color: #FFFFFF;
 }
 
 .hero-content {
     flex: 1;
     min-width: 300px;
-    padding-right: 2rem;
-    background-color: rgba(0, 0, 0, 0.7);
     padding: 2rem;
-    border-radius: 10px;
+    margin-right: 2rem;
 }
 
 .hero-image {
-    flex: 0 0 300px;
+    flex: 0 0 400px;
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100%;
 }
 
 .circular-image {
-    width: 300px;
-    height: 300px;
+    width: 400px;
+    height: 400px;
     border-radius: 50%;
     object-fit: cover;
-    border: 5px solid #FE6B0C;
 }
 
 .hero-buttons {
@@ -180,7 +183,7 @@ main {
 .simulator-section h2 {
     text-align: center;
     margin-bottom: 1rem;
-    color: #CDD71F;
+    color: #FFFFFF;
 }
 
 .simulator-section p {
@@ -204,7 +207,7 @@ main {
     border-radius: 25px;
     cursor: pointer;
     transition: all 0.3s;
-    font-family: 'All Round Gothic', sans-serif;
+    font-family: 'Futura PT', 'Futura', sans-serif;
     font-weight: 500;
 }
 
@@ -251,29 +254,33 @@ main {
 
 .simulator-actions {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    gap: 1rem;
+    gap: 2rem;
     padding: 1rem;
     background-color: #333;
     border-radius: 8px;
 }
 
 .upload-container {
-    flex: 1;
     text-align: center;
 }
 
 .upload-label {
     display: inline-block;
-    padding: 0.75rem 1.5rem;
-    background-color: #000000;
+    padding: 0.75rem 1rem;
+    background-color: #FE6B0C;
     color: #FFFFFF;
     border-radius: 25px;
     cursor: pointer;
     transition: opacity 0.3s;
-    font-weight: bold;
+    font-weight: 600;
     font-family: 'Futura PT', 'Futura', sans-serif;
+    width: 220px;
+    text-align: center;
+    text-transform: uppercase;
+    white-space: nowrap;
+    font-size: 0.9rem;
 }
 
 .upload-label:hover {
@@ -285,15 +292,19 @@ main {
 }
 
 .save-btn {
-    padding: 0.75rem 1.5rem;
-    background-color: #000000;
-    color: #FFFFFF;
+    padding: 0.75rem 1rem;
+    background-color: #CDD71F;
+    color: #000000;
     border: none;
     border-radius: 25px;
-    font-weight: bold;
+    font-weight: 600;
     cursor: pointer;
     transition: opacity 0.3s;
     font-family: 'Futura PT', 'Futura', sans-serif;
+    width: 220px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    text-align: center;
 }
 
 .save-btn:hover {
@@ -308,24 +319,26 @@ main {
 .about-hero {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
     max-width: 1200px;
     margin: 0 auto 3rem;
-    padding: 2rem;
+    padding: 2rem 2rem 2rem 2rem;
 }
 
 .about-hero-content {
     flex: 1;
     min-width: 300px;
+    max-width: 60%;
     padding-right: 2rem;
 }
 
 .about-hero-image {
-    flex: 0 0 300px;
+    flex: 0 0 40%;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-end;
+    align-items: flex-start;
+    padding-right: 0;
 }
 
 .about-image {
@@ -388,19 +401,32 @@ main {
     padding: 0;
     max-height: 0;
     overflow: hidden;
-    transition: all 0.3s ease-in-out;
+    transition: max-height 0.3s ease-in-out;
+    height: auto;
+    position: relative;
+}
+
+.type-content p {
+    padding: 0 1rem;
+    margin: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
 }
 
 .type-content.active {
-    padding: 1rem;
+    padding: 1rem 0;
     max-height: 300px;
+}
+
+.type-content.active p {
+    opacity: 1;
 }
 
 /* Pilestone Section */
 .pilestone-section {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
     max-width: 1200px;
     margin: 3rem auto;
@@ -409,17 +435,36 @@ main {
     border-radius: 20px;
 }
 
+.pilestone-header {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 2rem;
+    align-items: flex-start;
+}
+
+.pilestone-header img {
+    width: 80px;
+    height: auto;
+}
+
 .pilestone-content {
     flex: 1;
     min-width: 300px;
-    padding-right: 2rem;
+    max-width: 60%;
+    margin-right: 2rem;
+}
+
+.pilestone-content h3 {
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
 }
 
 .pilestone-image {
     flex: 0 0 300px;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-end;
+    align-items: flex-start;
 }
 
 .pilestone-img {
@@ -452,16 +497,8 @@ main {
 }
 
 .team-header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    text-align: center;
     margin-bottom: 2rem;
-}
-
-.team-logo {
-    width: 60px;
-    height: 40px;
-    margin-right: 1rem;
 }
 
 .team-members {
@@ -489,7 +526,7 @@ main {
 .contact-container {
     display: flex;
     flex-wrap: wrap;
-    max-width: 1200px;
+    max-width: 800px;
     margin: 0 auto;
     background-color: #111;
     border-radius: 20px;
@@ -499,7 +536,7 @@ main {
 
 .contact-content {
     flex: 1;
-    min-width: 300px;
+    width: 100%;
     padding: 2rem;
 }
 
@@ -555,7 +592,7 @@ main {
     transition: background-color 0.3s;
     width: 100%;
     text-align: center;
-    font-family: 'All Round Gothic', sans-serif;
+    font-family: 'Futura PT', 'Futura', sans-serif;
 }
 
 .submit-btn:hover {
@@ -632,8 +669,12 @@ footer {
     }
     
     .hero-content {
-        padding-right: 0;
+        margin-right: 0;
         margin-bottom: 2rem;
+    }
+    
+    .hero-image {
+        justify-content: center;
     }
     
     .contact-container {
